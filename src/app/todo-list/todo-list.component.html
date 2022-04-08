@@ -1,0 +1,15 @@
+<div class="progress" *ngIf="isLoading === true">
+  <div class="indeterminate"></div>
+</div>
+
+<div *ngIf="isLoading === false">
+  <app-todo-item
+    *ngFor="let todo of todos"
+    [tache]="todo"
+    (todoUpdatedEvent)="notifyUserTodoUpdated($event)"
+  >
+  </app-todo-item>
+</div>
+
+<input type="text" [(ngModel)]="inputValue" />
+<button (click)="addTodoItem()">Add</button>

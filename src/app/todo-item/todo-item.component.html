@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div
+      class="card"
+      [ngClass]="{
+        'blue lighten-4': !tache.done,
+        'teal accent-2': tache.done
+      }"
+    >
+      <div class="card-content white-text">
+        <span class="card-title" *ngIf="edition === false"
+          >{{ tache.label }}
+          {{ tache.creationDate | customDate: true }}
+          <i class="material-icons" (click)="edition = true">edit</i>
+        </span>
+        <input
+          *ngIf="edition === true"
+          [(ngModel)]="tache.label"
+          (keyup.enter)="todoUpdated()"
+        />
+      </div>
+      <div class="card-action">
+        <a (click)="tache.done = !tache.done">
+          {{ tache.done ? 'Undone' : 'Done' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
